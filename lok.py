@@ -9,7 +9,7 @@ class Thjonusta:
     def __init__(self, þjonusta):
         self.þ = þjonusta
 
-    def malari(self, flotur):
+    def malari(self, flotur, litur):
         asd = "asd"
 
     def pipari(self, lagnir):
@@ -17,6 +17,12 @@ class Thjonusta:
 
     def rafvirki(self, klst):
         asd = "asd"
+
+#listi[0] = hvað málarinn á að gera
+#listi[1] = hvað píparinn á að gera
+#listi[2] = hvað rafvirkinn á að gera
+#listi[3] = hvað smiðurinn á að gera
+listi = [[0, 0], 0, 0, 0]
 
 print("Valmöguleikar:"
       "\nMálari"
@@ -26,9 +32,22 @@ print("Valmöguleikar:"
 
 þjon = 0
 val = input("Veldu þjónustu: ")
-k1 = Thjonusta
+k1 = Thjonusta(listi)
 if val == "malari" or val == "Malari" or val == "Málari" or val == "málari":
-    þjon = 0
+    print("Valmöguleikar:"
+          "\n1. Gulur"
+          "\n2. Rauður"
+          "\n3. Grænn"
+          "\n4. Blár"
+          "\n5. Svartur"
+          "\n6. Hvítur")
+    try:
+        litur = int(input("Veldu lit: "))
+        if litur > 6 or litur < 1:
+            raise ValueError("Rangur innsláttur")
+    except ValueError as x:
+        print(x)
+
 elif val == "pipari" or val == "Pipari" or val == "Pípari" or val == "pípari":
     þjon = 2
     print("\nValmöguleikar:"
@@ -40,7 +59,7 @@ elif val == "pipari" or val == "Pipari" or val == "Pípari" or val == "pípari":
     try:
         verk = int(input("Veldu verk (1-5): "))
         if verk == 1:
-            k1(þjon).malari(1)
+            k1(listi).malari(1)
     except ValueError:
         print("Rangt gagnatak")
 
