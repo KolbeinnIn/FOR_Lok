@@ -67,13 +67,12 @@ try:
         except ValueError:
             print("Rangt gagnatak")
         if verk == 1:
-
             k1(listi).pipari()
         elif verk == 2:
             k1(listi).pipari()
     elif val == "rafvirki" or val == "Rafvirki":
         þjon = 3
-    elif val == "smiður" or val == "Smiður":
+    elif val == "smiður" or val == "Smiður" or val == "smidur" or val == "Smidur":
         þjon = 4
     else:
         raise ValueError("Rangt gagnatak")
