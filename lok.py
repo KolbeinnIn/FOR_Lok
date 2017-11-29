@@ -10,14 +10,16 @@ class Thjonusta:
         self.þ = þjonusta
 
     def malari(self):
-        asd = "asd"
+        asd = "asd1"
+        return asd
 
     def pipari(self):
-        asd = "asd"
+        asd = "asd2"
         return asd
 
     def rafvirki(self):
-        asd = "asd"
+        asd = "asd3"
+        return asd
 
 #listi[0] = hvað málarinn á að gera
 #listi[1] = hvað píparinn á að gera
@@ -74,7 +76,11 @@ try:
     elif val == "smiður" or val == "Smiður":
         þjon = 4
     else:
-        raise ValueError("")
+        raise ValueError("Rangt gagnatak")
+
+except ValueError as x:
+    print(x)
+
 
 
 
