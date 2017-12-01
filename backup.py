@@ -232,10 +232,3 @@ while asd:
         print(x, "\n")
         pass
         asd = True
-
-
-
-
-
-
-
