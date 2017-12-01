@@ -52,7 +52,7 @@ class Thjonusta:
 
 listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]]]
 
-
+asd = "asd"
 
 þjon = 0
 verk = 0
