@@ -5,14 +5,23 @@
 #Pöntun á þjónustu
 
 
+
+with open("starfsmenn.txt", "r") as skra:
+    skra = skra.read().split("\n")
+    malarar = skra[0].split(";")
+    piparar = skra[1].split(";")
+    rafv = skra[2].split(";")
+    smidir = skra[3].split(";")
+
+
 class Thjonusta:
     def __init__(self, þjonusta):
         self.þ = þjonusta
 
     def malari(self):
+        stadfestignargjald = 2000
         litur = self.þ[0][0]
         flotur = self.þ[0][1]
-        verdL = 0
         if 5 > litur > 0:
             verdL = 150
         else:
@@ -24,8 +33,9 @@ class Thjonusta:
         verd += (timi * 2900)
         vsk = verd * 0.24
         return ("Það gera " + str(int(verd)) + "kr" +
-                "\nVaskur: " + str(vsk) +
-                "\nSamtals: " + str(vsk+verd))
+                "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
+                "\nVaskur: " + str(vsk) + "kr" +
+                "\nSamtals: " + str(int(vsk+verd+stadfestignargjald)) + "kr")
 
     def pipari(self):
         asd = "asd2"
@@ -40,25 +50,25 @@ class Thjonusta:
 #listi[2] = hvað rafvirkinn á að gera
 #listi[3] = hvað smiðurinn á að gera
 
-listi = [[0, 0], 0, 0, [0, [0, 0, 0], [0, 0, 0]]]
+listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]]]
 
 
 
 þjon = 0
 verk = 0
-k1 = Thjonusta
+k1 = Thjonusta(listi)
 asd = True
 while asd:
+    asd = False
     print("Valmöguleikar:"
           "\nMálari"
           "\nPípari"
           "\nRafvirki"
           "\nSmiður")
-    asd = False
     try:
         val = input("Veldu þjónustu: ")
         val = val.lower()
-        if val == "malari" or val == "málari":
+        if val == "malari" or val == "málari" or eval(val) == 1:
             print("\nValmöguleikar:"
                   "\n1. Gulur"
                   "\n2. Rauður"
@@ -74,12 +84,12 @@ while asd:
                     raise ValueError("Rangur innsláttur")
                 else:
                     listi[0][0] = litur
-                    print(k1(listi).malari())
+                    print(k1.malari())
 
             except ValueError as x:
                 print(x)
 
-        elif val == "pipari" or val == "pípari":
+        elif val == "pipari" or val == "pípari" or eval(val) == 2:
             þjon = 2
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
@@ -91,13 +101,26 @@ while asd:
                 verk = int(input("Veldu verk (1-5): "))
             except ValueError:
                 print("Rangt gagnatak")
-            if verk == 1:
-                k1(listi).pipari()
-            elif verk == 2:
-                k1(listi).pipari()
-        elif val == "rafvirki":
+
+            if verk == 1:               #vaskur
+                listi[1][0] = 1
+                k1.pipari()
+            elif verk == 2:             #klósett
+                listi[1][0] = 2
+                k1.pipari()
+            elif verk == 3:             #stórar lagnir
+                listi[1][0] = 3
+                k1.pipari()
+            elif verk == 4:             #ofn
+                listi[1][0] = 4
+                k1.pipari()
+            elif verk == 5:             #sturta/bað
+                listi[1][0] = 5
+                k1.pipari()
+
+        elif val == "rafvirki" or eval(val) == 3:
             þjon = 3
-        elif val == "smiður" or val == "smidur":
+        elif val == "smiður" or val == "smidur" or eval(val) == 4:
             þjon = 4
         else:
             raise ValueError("Rangt gagnatak")
