@@ -13,6 +13,32 @@ with open("starfsmenn.txt", "r") as skra:
     rafv = skra[2].split(";")
     smidir = skra[3].split(";")
 
+muppl = []
+puppl = []
+ruppl = []
+suppl = []
+
+for x in malarar:
+    a = x.strip().split(",")
+    muppl.append(a)
+
+for x in piparar:
+    a = x.strip().split(",")
+    puppl.append(a)
+
+for x in rafv:
+    a = x.strip().split(",")
+    ruppl.append(a)
+
+for x in smidir:
+    a = x.strip().split(",")
+    suppl.append(a)
+
+print(muppl)
+print(puppl)
+print(ruppl)
+print(suppl)
+print("")
 
 class Thjonusta:
     def __init__(self, þjonusta):
@@ -52,8 +78,6 @@ class Thjonusta:
 
 listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]]]
 
-asd = "asd"
-
 þjon = 0
 verk = 0
 k1 = Thjonusta(listi)
@@ -68,7 +92,7 @@ while asd:
     try:
         val = input("Veldu þjónustu: ")
         val = val.lower()
-        if val == "malari" or val == "málari" or eval(val) == 1:
+        if val == "malari" or val == "málari" or val == "1":
             print("\nValmöguleikar:"
                   "\n1. Gulur"
                   "\n2. Rauður"
@@ -89,7 +113,7 @@ while asd:
             except ValueError as x:
                 print(x)
 
-        elif val == "pipari" or val == "pípari" or eval(val) == 2:
+        elif val == "pipari" or val == "pípari" or val == "2":
             þjon = 2
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
@@ -103,26 +127,29 @@ while asd:
                 print("Rangt gagnatak")
 
             if verk == 1:               #vaskur
-                listi[1][0] = 1
+                listi[1][0] = verk
                 k1.pipari()
             elif verk == 2:             #klósett
-                listi[1][0] = 2
+                listi[1][0] = verk
                 k1.pipari()
             elif verk == 3:             #stórar lagnir
-                listi[1][0] = 3
+                listi[1][0] = verk
                 k1.pipari()
             elif verk == 4:             #ofn
-                listi[1][0] = 4
+                fjofn = int(input("Fjöldi ofna? "))
+                if fjofn > 0:
+                    listi[1][1] = fjofn
+                else:
+                    print("Enginn ofn")
+                listi[1][0] = verk
                 k1.pipari()
             elif verk == 5:             #sturta/bað
-                listi[1][0] = 5
+                listi[1][0] = verk
                 k1.pipari()
 
         elif val == "rafvirki" or eval(val) == 3:
             þjon = 3
-        elif val == "smiður" or val == "smidur" or eval(val) == 4:
-            val == "smidur" or val == "Smidur":
-            þjon = 4
+        elif val == "smiður" or val == "smidur" or val == "4":
             print("\nValmöguleikar:"
                   "\n1. Utandyra"
                   "\n2. Innandyra")
@@ -174,12 +201,6 @@ while asd:
                     if utinn == 1:
                         bubbi = int(input("Brjóta eða byggja vegg (1-2): "))
                         fj = int(input("Hversu margir eru veggirnir? "))
-                        if bubbi == 1:
-
-                        elif bubbi == 2:
-
-                        else:
-                            print("Rangur innsláttur")
                         teljari = 0
                         jolasvein = []
                         for x in range(fj):
@@ -204,6 +225,8 @@ while asd:
 
                     else:
                         print("Rangur innsláttur")
+            except:
+                print("Rangur innsláttur")
         else:
             raise ValueError("Rangt gagnatak")
 
