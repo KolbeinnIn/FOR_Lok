@@ -76,10 +76,6 @@ class Thjonusta:
 
 listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]]]
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 50fb0658796d420774c2f83c18a608f4c36aeb78
 þjon = 0
 verk = 0
 k1 = Thjonusta(listi)
@@ -94,11 +90,8 @@ while asd:
     try:
         val = input("Veldu þjónustu: ")
         val = val.lower()
-<<<<<<< HEAD
+
         if val == "malari" or val == "málari" or val == "1":
-=======
-        if val == "malari" or val == "málari":
->>>>>>> 50fb0658796d420774c2f83c18a608f4c36aeb78
             print("\nValmöguleikar:"
                   "\n1. Gulur"
                   "\n2. Rauður"
@@ -118,12 +111,7 @@ while asd:
 
             except ValueError as x:
                 print(x)
-
-<<<<<<< HEAD
         elif val == "pipari" or val == "pípari" or val == "2":
-=======
-        elif val == "pipari" or val == "pípari":
->>>>>>> 50fb0658796d420774c2f83c18a608f4c36aeb78
             þjon = 2
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
@@ -159,9 +147,7 @@ while asd:
 
         elif val == "rafvirki":
             þjon = 3
-<<<<<<< HEAD
         elif val == "smiður" or val == "smidur" or val == "4":
-        elif val == "smiður" or val == "smidur":
             þjon = 4
             print("\nValmöguleikar:"
                   "\n1. Utandyra"
@@ -251,13 +237,8 @@ while asd:
 
                     else:
                         print("Rangur innsláttur")
-<<<<<<< HEAD
             except:
                 print("Rangur innsláttur")
-=======
-            except ValueError:
-                print("Rangt gagnatak")
->>>>>>> 50fb0658796d420774c2f83c18a608f4c36aeb78
         else:
             raise ValueError("Rangt gagnatak")
 
