@@ -56,10 +56,12 @@ class Thjonusta:
         verd = flotur * verdL
         verd += (timi * 2900)
         vsk = verd * 0.24
-        return ("Það gera " + str(int(verd)) + "kr" +
+        a = self.þ[4]
+        return ("\nMálari:" + str(a[0]) + " " + str(a[1]) + " " + str(a[2]) +
+                "\nÞað gera " + str(int(verd)) + "kr" +
                 "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
                 "\nVaskur: " + str(vsk) + "kr" +
-                "\nSamtals: " + str(int(vsk+verd+stadfestignargjald)) + "kr")
+                "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")
 
     def pipari(self):
         asd = "asd2"
@@ -69,23 +71,20 @@ class Thjonusta:
         asd = "asd3"
         return asd
 
+"""
     def smidur(self):
-        def __init__(self, þjonusta):
-            self.þ = þjonusta
-
-        def smidur(self):
-            inadnout=self.þ[][]
-            return ("Það gera " + str(int(verd)) + "kr" +
-                    "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
-                    "\nVaskur: " + str(vsk) + "kr" +
-                    "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")
+        inadnout=self.þ[3][]
+        return ("Það gera " + str(int(verd)) + "kr" +
+                "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
+                "\nVaskur: " + str(vsk) + "kr" +
+                "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")"""
 
 #listi[0] = hvað málarinn á að gera
 #listi[1] = hvað píparinn á að gera
 #listi[2] = hvað rafvirkinn á að gera
 #listi[3] = hvað smiðurinn á að gera
 
-listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]]]
+listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
 
 þjon = 0
 verk = 0
@@ -103,6 +102,15 @@ while asd:
         val = val.lower()
 
         if val == "malari" or val == "málari" or val == "1":
+            teljari = 1
+            for x in muppl:
+                print(teljari, end=". ")
+                for i in x:
+                    print(i, end=" ")
+                print("")
+                teljari += 1
+            manni = int(input("Veldu málara (1-3): "))
+            listi[4] = muppl[manni-1]
             print("\nValmöguleikar:"
                   "\n1. Gulur"
                   "\n2. Rauður"
@@ -123,7 +131,15 @@ while asd:
             except ValueError as x:
                 print(x)
         elif val == "pipari" or val == "pípari" or val == "2":
-            þjon = 2
+            teljari = 1
+            for x in muppl:
+                print(teljari, end=". ")
+                for i in x:
+                    print(i, end=" ")
+                    print("")
+                teljari += 1
+            manni = int(input("Veldu málara (1-3): "))
+            listi[4] = puppl[manni - 1]
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
                   "\n2. Klósett"
@@ -157,9 +173,25 @@ while asd:
                 k1.pipari()
 
         elif val == "rafvirki":
-            þjon = 3
+            teljari = 1
+            for x in muppl:
+                print(teljari, end=". ")
+                for i in x:
+                    print(i, end=" ")
+                    print("")
+                teljari += 1
+            manni = int(input("Veldu málara (1-3): "))
+            listi[4] = ruppl[manni - 1]
         elif val == "smiður" or val == "smidur" or val == "4":
-            þjon = 4
+            teljari = 1
+            for x in muppl:
+                print(teljari, end=". ")
+                for i in x:
+                    print(i, end=" ")
+                    print("")
+                teljari += 1
+            manni = int(input("Veldu málara (1-3): "))
+            listi[4] = suppl[manni - 1]
             print("\nValmöguleikar:"
                   "\n1. Utandyra"
                   "\n2. Innandyra")
