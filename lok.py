@@ -65,8 +65,12 @@ class Thjonusta:
         asd = "asd2"
         return asd
 
-    def rafvirki(self):
+    def rafv(self):
         asd = "asd3"
+        return asd
+
+    def smidur(self):
+        asd = "asd4"
         return asd
 
 #listi[0] = hvað málarinn á að gera
