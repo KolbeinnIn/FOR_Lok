@@ -56,9 +56,7 @@ class Thjonusta:
         verd = flotur * verdL
         verd += (timi * 2900)
         vsk = verd * 0.24
-        a = self.þ[4]
-        return ("Málari:" + str(a[0]) + " " + str(a[1]) + " " +  str(a[2]) +
-                "\nÞað gera " + str(int(verd)) + "kr" +
+        return ("Það gera " + str(int(verd)) + "kr" +
                 "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
                 "\nVaskur: " + str(vsk) + "kr" +
                 "\nSamtals: " + str(int(vsk+verd+stadfestignargjald)) + "kr")
@@ -72,15 +70,22 @@ class Thjonusta:
         return asd
 
     def smidur(self):
-        asd = "asd4"
-        return asd
+        def __init__(self, þjonusta):
+            self.þ = þjonusta
+
+        def smidur(self):
+            inadnout=self.þ[][]
+            return ("Það gera " + str(int(verd)) + "kr" +
+                    "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
+                    "\nVaskur: " + str(vsk) + "kr" +
+                    "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")
 
 #listi[0] = hvað málarinn á að gera
 #listi[1] = hvað píparinn á að gera
 #listi[2] = hvað rafvirkinn á að gera
 #listi[3] = hvað smiðurinn á að gera
 
-listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
+listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]]]
 
 þjon = 0
 verk = 0
@@ -95,19 +100,9 @@ while asd:
           "\nSmiður")
     try:
         val = input("Veldu þjónustu: ")
-        print("")
         val = val.lower()
 
         if val == "malari" or val == "málari" or val == "1":
-            teljari = 1
-            for x in muppl:
-                print(teljari, end=". ")
-                for i in x:
-                    print(i, end=" ")
-                print("")
-                teljari += 1
-            manni = int(input("Veldu málara (1-3): "))
-            listi[4] = muppl[manni-1]
             print("\nValmöguleikar:"
                   "\n1. Gulur"
                   "\n2. Rauður"
@@ -128,81 +123,43 @@ while asd:
             except ValueError as x:
                 print(x)
         elif val == "pipari" or val == "pípari" or val == "2":
-            teljari = 1
-            for x in puppl:
-                print(teljari, end=". ")
-                for i in x:
-                    print(i, end=" ")
-                print("")
-                teljari += 1
-            manni = int(input("Veldu pípara (1-3): "))
-            listi[4] = puppl[manni-1]
+            þjon = 2
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
                   "\n2. Klósett"
                   "\n3. Stórar lagnir (nýjar lagnir fyrir t.d. baðherbergi)"
                   "\n4. Ofn"
                   "\n5. Sturta/Bað")
-            while True:
-                try:
-                    verk = int(input("Veldu verk (1-5): "))
-                    if verk > 5 or verk < 1:
-                        print("Rangur innsláttur")
-                    else:
-                        if verk == 1:               #vaskur
-                            listi[1][0] = verk
-                            k1.pipari()
-                            break
-                        elif verk == 2:             #klósett
-                            listi[1][0] = verk
-                            k1.pipari()
-                            break
-                        elif verk == 3:             #stórar lagnir
-                            listi[1][0] = verk
-                            k1.pipari()
-                            break
-                        elif verk == 4:             #ofn
-                            while True:
-                                try:
-                                    fjofn = int(input("Fjöldi ofna? "))
-                                    if fjofn > 0:
-                                        listi[1][1] = fjofn
-                                        listi[1][0] = verk
-                                        k1.pipari()
-                                        break
-                                    else:
-                                        print("Enginn ofn")
-                                except ValueError:
-                                    print("Rangt gangatak")
-                                    pass
-                        elif verk == 5:             #sturta/bað
-                            listi[1][0] = verk
-                            k1.pipari()
-                            break
+            try:
+                verk = int(input("Veldu verk (1-5): "))
+            except ValueError:
+                print("Rangt gagnatak")
 
-                except ValueError:
-                    print("Rangt gagnatak")
-        elif val == "rafvirki" or val == "3":
-            teljari = 1
-            for x in ruppl:
-                print(teljari, end=". ")
-                for i in x:
-                    print(i, end=" ")
-                print("")
-                teljari += 1
-            manni = int(input("Veldu rafvirkja (1-3): "))
-            listi[4] = ruppl[manni-1]
+            if verk == 1:               #vaskur
+                listi[1][0] = verk
+                k1.pipari()
+            elif verk == 2:             #klósett
+                listi[1][0] = verk
+                k1.pipari()
+            elif verk == 3:             #stórar lagnir
+                listi[1][0] = verk
+                k1.pipari()
+            elif verk == 4:             #ofn
+                fjofn = int(input("Fjöldi ofna? "))
+                if fjofn > 0:
+                    listi[1][1] = fjofn
+                else:
+                    print("Enginn ofn")
+                listi[1][0] = verk
+                k1.pipari()
+            elif verk == 5:             #sturta/bað
+                listi[1][0] = verk
+                k1.pipari()
+
+        elif val == "rafvirki":
+            þjon = 3
         elif val == "smiður" or val == "smidur" or val == "4":
-            teljari = 1
-            for x in suppl:
-                print(teljari, end=". ")
-                for i in x:
-                    print(i, end=" ")
-                print("")
-                teljari += 1
-            manni = int(input("Veldu smið (1-3): "))
-            listi[4] = suppl[manni-1]
-
+            þjon = 4
             print("\nValmöguleikar:"
                   "\n1. Utandyra"
                   "\n2. Innandyra")
@@ -217,7 +174,7 @@ while asd:
                     utinn = int(input("Veldu verk (1-3): "))
                     if utinn == 1:
                         st = int(input("Hver er stærð þaksins í fermetrum? "))
-                        fm = 1200 + 2000
+                        fm = 3200
                         skurt = fm * st
                         print(skurt)
                     elif utinn == 2:
@@ -242,6 +199,11 @@ while asd:
                         vegg = input("Viltu vegg? J/N").upper()
                         if vegg == "J":
                             ha = int(input("Hversu hár á hann að vera? "))
+                            qwert=ha*15000
+                            vallur=qwert+(pall*2500)
+                        else:
+                            vallur=pall*2500
+                        print(vallur)
                     else:
                         print("Rangur innsláttur")
 
@@ -253,21 +215,23 @@ while asd:
                     utinn = int(input("Veldu verk (1-3): "))
                     if utinn == 1:
                         bubbi = int(input("Brjóta eða byggja vegg (1-2): "))
-                        fj = int(input("Hversu margir eru veggirnir? "))
-                        teljari = 0
-                        jolasvein = []
-                        for x in range(fj):
-                            teljari += 1
-                            print("--- Veggur", teljari, "---")
-                            sterd = int(input("Sláðu inn stærð veggs í fermetrum "))
-                            jolasvein.append(sterd)
                         if bubbi == 1:
                             skurtskurt = 0
-                            for x in jolasvein:
+                            fj = int(input("Hversu margir eru veggirnir? "))
+                            for x in range(fj):
                                 skurtskurt=x*500+skurtskurt
                                 skurtskurt=skurtskurt+8000
+                            skurtskurt+=5000
                             print(skurtskurt)
                         elif bubbi == 2:
+                            fj = int(input("Hversu margir eru veggirnir? "))
+                            teljari = 0
+                            jolasvein = []
+                            for x in range(fj):
+                                teljari += 1
+                                print("--- Veggur", teljari, "---")
+                                sterd = int(input("Sláðu inn stærð veggs í fermetrum "))
+                                jolasvein.append(sterd)
                             skurtskurt = 0
                             for x in jolasvein:
                                 skurtskurt=x*1000+skurtskurt
@@ -281,13 +245,16 @@ while asd:
                               "\n2. Baðherberginu")
                         berg = int(input(">>"))
                         if berg == 1:
-                            kost = "kost"
+                            kost = 150000
                         elif berg == 2:
-                            kost = "kostinn"
+                            kost = 200000
                         else:
                             print("Rangur innsláttur")
+                        print(kost)
                     elif utinn == 3:
                         jolakotturinn = int(input("Stærð gólfs í fermetrum: "))
+                        jolakotturinn=jolakotturinn*5000
+                        print(jolakotturinn)
 
                     else:
                         print("Rangur innsláttur")
@@ -300,10 +267,3 @@ while asd:
         print(x, "\n")
         pass
         asd = True
-
-
-
-
-
-
-
