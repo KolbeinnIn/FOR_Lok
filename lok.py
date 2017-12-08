@@ -11,11 +11,14 @@ with open("starfsmenn.txt", "r") as skra:
     rafv = skra[2].split(";")
     smidir = skra[3].split(";")
 
+
+#fyrsti stafur vinnu + uppl fyrir upplýsingar
 muppl = []
 puppl = []
 ruppl = []
 suppl = []
 
+#Hér eru for lykkjur sem bæta verktökum í viðeigandi lista
 for x in malarar:
     a = x.strip().split(",")
     muppl.append(a)
@@ -32,11 +35,6 @@ for x in smidir:
     a = x.strip().split(",")
     suppl.append(a)
 
-print(muppl)
-print(puppl)
-print(ruppl)
-print(suppl)
-print("")
 
 class Thjonusta:
     def __init__(self, thjonusta):
@@ -150,7 +148,7 @@ class Thjonusta:
 
 
 listi = [["litur", "stærð veggs/lofts", "loft eða veggur"],                                             #Málari
-         ["ákveðið verk", "Nýjar lagnir eða ekki, skipta eða setja nýja ofna", "tegund vöru"],          #Pípari
+         ["ákveðið verk", "Nýjar lagnir eða ekki, skipta eða setja nýja ofna", "tegund vöru","sturta eða bað"],          #Pípari
          0,                                                                                             #Rafvirki
          [0, [0, 0, 0], [0, 0, 0]],                                                                     #Smiður
          0]                                                                                             #Upplýsignar um verktaka
@@ -323,6 +321,18 @@ while asd:
 
             elif verk == 4:             #sturta/bað
                 lagnir = input("Þarf að leggja nýjar lagnir fyrir sturtuna/baðið (Y/N)? ")
+
+
+                while True:
+                    burta = int(input("1. Bað"
+                                      "\n2. Sturta"
+                                      "\n Veldu (1-2): "))
+                    if burta == 1 or burta == 2:
+                        break
+                    else:
+                        print("Rangur innsláttur")
+
+
                 lagnir = lagnir.lower()
                 while True:
                     if lagnir == "y":
@@ -334,16 +344,35 @@ while asd:
                     else:
                         print("Rangur innsláttur")
                 while True:
-                    smancy = int(input("\n1. Ódýr sturta/bað"
-                                       "\n2. Góð sturta/bað á góðu verði"
-                                       "\n3. Lúxus sturta/bað"
-                                       "\nVeldu (1-3): "))
-                    if smancy == 1 or smancy == 2 or smancy == 3:
-                        listi[1][2] = smancy
+                    if burta == 1:
+                        while True:
+                            sturta = int(input("\n1. Ódýrt bað"
+                                               "\n2. Gott bað á góðu verði"
+                                               "\n3. Lúxus bað"
+                                               "\nVeldu (1-3): "))
+                            if sturta == 1 or sturta == 2 or sturta == 3:
+                                listi[1][2] = sturta
+                                break
+                            else:
+                                print("Rangur innsláttur")
+                        listi[1][0] = verk
                         break
+                    elif burta == 2:
+                        while True:
+                            smancy = int(input("\n1. Ódýr sturta"
+                                               "\n2. Góð sturta á góðu verði"
+                                               "\n3. Lúxus sturta"
+                                               "\nVeldu (1-3): "))
+                            if smancy == 1 or smancy == 2 or smancy == 3:
+                                listi[1][2] = smancy
+                                break
+                            else:
+                                print("Rangur innsláttur")
+                            listi[1][0] = verk
+                            break
                     else:
                         print("Rangur innsláttur")
-                listi[1][0] = verk
+
             print(k1.pipari())
 
         elif val == "rafvirki" or val == "3":
