@@ -86,14 +86,18 @@ class Thjonusta:
         return ("Það gera " + str(int(verd)) + "kr" +
                 "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
                 "\nVaskur: " + str(vsk) + "kr" +
-                "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")"""
+                "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")
+                
+"""
 
 #listi[0] = hvað málarinn á að gera
 #listi[1] = hvað píparinn á að gera
 #listi[2] = hvað rafvirkinn á að gera
 #listi[3] = hvað smiðurinn á að gera
 
-listi = [[0, 0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
+
+listi = [["litur", "stærð veggs/lofts", "loft eða veggur"], #Málari
+         ["ákveðið verk", 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
 
 verk = 0
 k1 = Thjonusta(listi)
@@ -165,7 +169,6 @@ while asd:
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
                   "\n2. Klósett"
-                  "\n3. Stórar lagnir (nýjar lagnir fyrir t.d. baðherbergi)"
                   "\n4. Ofn"
                   "\n5. Sturta/Bað")
             try:
@@ -204,6 +207,17 @@ while asd:
                 teljari += 1
             manni = int(input("Veldu rafvirkja (1-3): "))
             listi[4] = ruppl[manni - 1]
+
+            print("Valmöguleikar:"
+                  "\n1. Skipta um rafmagstöflu"
+                  "\n2. Viðgerðir á sambandsleysi í vegg"
+                  "\n3. Tengja raftæki við vegg/loft")
+            valR = int(input("Veldu (1-3): "))
+            if valR == 1:
+                staerd = int(input("Sláðu inn stæð hússins í m²: "))
+                listi[2][]
+
+
         elif val == "smiður" or val == "smidur" or val == "4":
             teljari = 1
             for x in suppl:
