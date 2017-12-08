@@ -46,7 +46,10 @@ class Thjonusta:
         stadfestignargjald = 2000
         litur = self.th[0][0]
         flotur = self.th[0][1]
-        a = self.th[4]           #a eru tímakaup vinnumannsinns
+        a = self.th[4]           #a eru upplýsingarnar um verktakann
+        print("")
+        print(a)
+        print("")
 
 
         #0.25 af því að það eru 15 mínútur (fjórðungur af klukkustund). Það tekur korter að mála einn fermeter
@@ -63,7 +66,7 @@ class Thjonusta:
 
         timi = flotur * 0.25
         verd = flotur * verdL
-        verd += (timi * int(a[3]))
+        verd += (timi * int(a[3]))      #a[3] eru tímakaup verktakans
         vsk = verd * 0.24
 
         return ("\nMálari:" + str(a[0]) + " " + str(a[1]) + " " + str(a[2]) +
@@ -73,7 +76,15 @@ class Thjonusta:
                 "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")
 
     def pipari(self):
-        asd = "asd2"
+        uppl = self.th[1]
+        verd = 0
+        if uppl[0] == 1: #Vaskur
+            if uppl[1] == "y":
+                if uppl[2] == 1:
+
+
+
+        print(uppl)
         return asd
 
     def rafv(self):
@@ -96,8 +107,11 @@ class Thjonusta:
 #listi[3] = hvað smiðurinn á að gera
 
 
-listi = [["litur", "stærð veggs/lofts", "loft eða veggur"], #Málari
-         ["ákveðið verk", 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
+listi = [["litur", "stærð veggs/lofts", "loft eða veggur"],                                             #Málari
+         ["ákveðið verk", "Nýjar lagnir eða ekki, skipta eða setja nýja ofna", "tegund vöru"],          #Pípari
+         0,                                                                                             #Rafvirki
+         [0, [0, 0, 0], [0, 0, 0]],                                                                     #Smiður
+         0]                                                                                             #Verktaki
 
 teljari2 = 1
 verk = 0
@@ -192,10 +206,19 @@ while asd:
                 while True:
                     if lagnir == "y":
                         listi[1][1] = lagnir
-
                         break
                     elif lagnir == "n":
                         listi[1][1] = lagnir
+                        break
+                    else:
+                        print("Rangur innsláttur")
+                while True:
+                    smancy = int(input("\n1. Ódýr vaskur"
+                                       "\n2. Góður vaskur á góðu verði"
+                                       "\n3. Lúxus vaskur"
+                                       "\nVeldu (1-3): "))
+                    if smancy == 1 or smancy == 2 or smancy == 3:
+                        listi[1][3] = smancy
                         break
                     else:
                         print("Rangur innsláttur")
@@ -209,10 +232,19 @@ while asd:
                 while True:
                     if lagnir == "y":
                         listi[1][1] = lagnir
-
                         break
                     elif lagnir == "n":
                         listi[1][1] = lagnir
+                        break
+                    else:
+                        print("Rangur innsláttur")
+                while True:
+                    smancy = int(input("\n1. Ódýr klósett"
+                                       "\n2. Gott klósett á góðu verði"
+                                       "\n3. Lúxus klósett"
+                                       "\nVeldu (1-3): "))
+                    if smancy == 1 or smancy == 2 or smancy == 3:
+                        listi[1][3] = smancy
                         break
                     else:
                         print("Rangur innsláttur")
@@ -225,15 +257,27 @@ while asd:
                                    "\nVeldu (1-2): "))
 
                 if skipta == 1:
-                    fjofn = int(input("Fjöldi ofna? "))
-                    if fjofn > 0:
-                        listi[1][1] = fjofn
-                    else:
-                        print("Enginn ofn")
+                    while True:
+                        fjofn = int(input("Fjöldi ofna? "))
+                        if fjofn > 0:
+                            listi[1][1] = fjofn
+                            break
+                        else:
+                            print("Enginn ofn")
                     listi[1][0] = verk
+                    listi[1][1] = 1
                     k1.pipari()
                 elif skipta == 2:
-                   asd="asd"
+                    while True:
+                        fjofn = int(input("Fjöldi ofna? "))
+                        if fjofn > 0:
+                            listi[1][1] = fjofn
+                            break
+                        else:
+                            print("Enginn ofn")
+                    listi[1][0] = verk
+                    listi[1][1] = 2
+                    k1.pipari()
                 else:
                     print("Rangur innsláttur")
 
@@ -246,6 +290,16 @@ while asd:
                         break
                     elif lagnir == "n":
                         listi[1][1] = lagnir
+                        break
+                    else:
+                        print("Rangur innsláttur")
+                while True:
+                    smancy = int(input("\n1. Ódýr sturta/bað"
+                                       "\n2. Góð sturta/bað á góðu verði"
+                                       "\n3. Lúxus sturta/bað"
+                                       "\nVeldu (1-3): "))
+                    if smancy == 1 or smancy == 2 or smancy == 3:
+                        listi[1][3] = smancy
                         break
                     else:
                         print("Rangur innsláttur")
