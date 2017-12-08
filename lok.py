@@ -63,7 +63,6 @@ class Thjonusta:
 
         timi = flotur * 0.25
         verd = flotur * verdL
-        print(a)
         verd += (timi * int(a[3]))
         vsk = verd * 0.24
 
