@@ -39,24 +39,34 @@ print(suppl)
 print("")
 
 class Thjonusta:
-    def __init__(self, þjonusta):
-        self.þ = þjonusta
+    def __init__(self, thjonusta):
+        self.th = thjonusta
 
     def malari(self):
         stadfestignargjald = 2000
-        litur = self.þ[0][0]
-        flotur = self.þ[0][1]
-        if 5 > litur > 0:
-            verdL = 150
-        else:
-            verdL = 100
+        litur = self.th[0][0]
+        flotur = self.th[0][1]
+        a = self.th[4]           #a eru tímakaup vinnumannsinns
+
 
         #0.25 af því að það eru 15 mínútur (fjórðungur af klukkustund). Það tekur korter að mála einn fermeter
+        if self.th[0][2] == 1:
+            if 5 > litur > 0:
+                verdL = 150
+            else:
+                verdL = 100
+        else:
+            if 5 > litur > 0:
+                verdL = 200
+            else:
+                verdL = 150
+
         timi = flotur * 0.25
         verd = flotur * verdL
-        verd += (timi * 2900)
+        print(a)
+        verd += (timi * int(a[3]))
         vsk = verd * 0.24
-        a = self.þ[4]
+
         return ("\nMálari:" + str(a[0]) + " " + str(a[1]) + " " + str(a[2]) +
                 "\nÞað gera " + str(int(verd)) + "kr" +
                 "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
@@ -73,7 +83,7 @@ class Thjonusta:
 
 """
     def smidur(self):
-        inadnout=self.þ[3][]
+        inadnout=self.th[3][]
         return ("Það gera " + str(int(verd)) + "kr" +
                 "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
                 "\nVaskur: " + str(vsk) + "kr" +
@@ -84,9 +94,8 @@ class Thjonusta:
 #listi[2] = hvað rafvirkinn á að gera
 #listi[3] = hvað smiðurinn á að gera
 
-listi = [[0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
+listi = [[0, 0, 0], [0, 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
 
-þjon = 0
 verk = 0
 k1 = Thjonusta(listi)
 asd = True
@@ -105,12 +114,26 @@ while asd:
             teljari = 1
             for x in muppl:
                 print(teljari, end=". ")
+                teljari2 = 1
                 for i in x:
                     print(i, end=" ")
+                    if teljari2 == 3:
+                        print(" Tímakaup:", end=" ")
+                    teljari2 += 1
                 print("")
                 teljari += 1
             manni = int(input("Veldu málara (1-3): "))
             listi[4] = muppl[manni-1]
+            print("1. Veggur/ir"
+                  "\n2. Þak")
+            while True:
+                veggthak = int(input("Veldu 1-2: "))
+                if veggthak < 1 or veggthak > 2:
+                    print("Rangur innsláttur")
+                else:
+                    listi[0][2] = veggthak
+                    break
+
             print("\nValmöguleikar:"
                   "\n1. Gulur"
                   "\n2. Rauður"
@@ -132,13 +155,13 @@ while asd:
                 print(x)
         elif val == "pipari" or val == "pípari" or val == "2":
             teljari = 1
-            for x in muppl:
+            for x in puppl:
                 print(teljari, end=". ")
                 for i in x:
                     print(i, end=" ")
-                    print("")
+                print("")
                 teljari += 1
-            manni = int(input("Veldu málara (1-3): "))
+            manni = int(input("Veldu pípara (1-3): "))
             listi[4] = puppl[manni - 1]
             print("\nValmöguleikar:"
                   "\n1. Vaskur"
@@ -172,25 +195,25 @@ while asd:
                 listi[1][0] = verk
                 k1.pipari()
 
-        elif val == "rafvirki":
+        elif val == "rafvirki" or val == "3":
             teljari = 1
-            for x in muppl:
+            for x in ruppl:
                 print(teljari, end=". ")
                 for i in x:
                     print(i, end=" ")
-                    print("")
+                print("")
                 teljari += 1
-            manni = int(input("Veldu málara (1-3): "))
+            manni = int(input("Veldu rafvirkja (1-3): "))
             listi[4] = ruppl[manni - 1]
         elif val == "smiður" or val == "smidur" or val == "4":
             teljari = 1
-            for x in muppl:
+            for x in suppl:
                 print(teljari, end=". ")
                 for i in x:
                     print(i, end=" ")
-                    print("")
+                print("")
                 teljari += 1
-            manni = int(input("Veldu málara (1-3): "))
+            manni = int(input("Veldu smið (1-3): "))
             listi[4] = suppl[manni - 1]
             print("\nValmöguleikar:"
                   "\n1. Utandyra"
