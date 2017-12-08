@@ -147,17 +147,46 @@ class Thjonusta:
         vsk = verd * 0.24               #virðisaukaskattur er bætt við verð, ekki tímakaup
         verd = verd + timakaup
 
-        if vsk == 0:
-            return "Eitthvað fór úrskeiðis"
-        else:
-            return ("\nPípari: " + str(a[0]) + " " + str(a[1]) + " " + str(a[2]) +
-                    "\nÞað gera " + str(int(verd)) + "kr" +
-                    "\nVirðisaukaskattur: " + str(vsk) + "kr" +
-                    "\nSamtals: " + str(int(vsk + verd)) + "kr")
+
+        return ("\nPípari: " + str(a[0]) + " " + str(a[1]) + " " + str(a[2]) +
+                "\nÞað gera " + str(int(verd)) + "kr" +
+                "\nVirðisaukaskattur: " + str(vsk) + "kr" +
+                "\nSamtals: " + str(int(vsk + verd)) + "kr")
 
     def rafv(self):
-        asd = "asd3"
-        return asd
+        a = self.th[4]
+        uppl = self.th[2]
+        verd = 0
+        timi = 0
+        if uppl[0] == 1:            #Rafmagnstafla
+            timi = 5
+            verd = verd * timi
+            if uppl[1] < 100:
+                verd += 400000
+            elif uppl[1] > 100 and uppl[1] < 250:
+                verd += 500000
+            elif uppl[1] > 250 and uppl[1] < 400:
+                verd += 600000
+            elif uppl[1] > 400:
+                verd += 700000
+
+        elif uppl[0] == 2:          #Sambandsleysi í vegg
+            fjveggja = uppl[1]
+            verd = fjveggja * 7000   #það kostar 7000 að gera við sambandsleysi í einum vegg
+            timi = fjveggja * 0.16666666666666666666666666666667    #16.6667 eru 10 mínútur
+
+        elif uppl[0] == 3:          #Tengja raftæki/innstungur
+            fjraftaekja = uppl[1]
+            verd = fjraftaekja * 6000  # það kostar 6000 að tengja rafæki/innstungu
+            timi = fjraftaekja * 0.16666666666666666666666666666667    #16.6667 eru 10 mínútur
+
+
+        verd += (timi * int(a[3]))  # a[3] eru tímakaup verktakans
+        vsk = verd * 0.24
+        return ("\nRafvirki: " + str(a[0]) + " " + str(a[1]) + " " + str(a[2]) +
+                "\nÞað gera " + str(int(verd)) + "kr" +
+                "\nVirðisaukaskattur: " + str(round(vsk, 2)) + "kr" +
+                "\nSamtals: " + str(int(vsk + verd)) + "kr")
 
 
 """
@@ -178,7 +207,7 @@ class Thjonusta:
 
 listi = [["litur", "stærð veggs/lofts", "loft eða veggur"],  # Málari
          ["ákveðið verk", "Nýjar lagnir eða ekki / skipta eða setja nýja ofna", "tegund vöru", "sturta eða bað"], #Pípari
-         0,  # Rafvirki
+         ["ákveðið verk", "Stærð húss/fjöldi veggja/fjöldi raftækja"],  # Rafvirki
          [0, [0, 0, 0], [0, 0, 0]],  # Smiður
          0]  # Upplýsignar um verktaka
 
@@ -440,19 +469,33 @@ while asd:
             while True:
                 manni = int(input("Veldu pípara (1-3): "))
                 if manni == 1 or manni == 2 or manni == 3:
-                    listi[4] = puppl[manni - 1]
+                    listi[4] = ruppl[manni - 1]
                     break
                 else:
                     print("Rangur innsláttur")
-
             print("Valmöguleikar:"
                   "\n1. Skipta um rafmagstöflu"
                   "\n2. Viðgerðir á sambandsleysi í vegg"
                   "\n3. Tengja raftæki við vegg/loft")
-            valR = int(input("Veldu (1-3): "))
-            if valR == 1:
-                staerd = int(input("Sláðu inn stæð hússins í m²: "))
-                listi[2][1] = "asd"
+            try:
+                verk = int(input("Veldu (1-3): "))
+            except ValueError:
+                print("Rangt gagnatak")
+
+            if verk == 1:           #Rafmagnstafla
+                hus = int(input("Hve stórt er húsið í m²: "))
+                listi[2][1] = hus
+
+            elif verk == 2:         #Sambandsleysi í vegg
+                fjVeggja = int(input("Fjöldi veggja? "))
+                listi[2][1] = fjVeggja
+
+            elif verk == 3:
+                fjTaekja = int(input("Fjöldi raftækja/innstungna? "))
+                listi[2][1] = fjTaekja
+            listi[2][0] = verk
+            print(k1.rafv())
+
 
         elif val == "smiður" or val == "smidur" or val == "4":
             #####################################################################
