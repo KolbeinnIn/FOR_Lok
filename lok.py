@@ -3,6 +3,9 @@
 # Lokaverkefni í forritun - Pöntun á þjónustu
 
 
+#######################################################################################################################################
+#ATH! ef þér finnst að vanti comment, lestu þá yfir "Lokaverkefni-Plan.docx", þar ætti kóðinn að útskýra sig sjálfan
+#######################################################################################################################################
 
 with open("starfsmenn.txt", "r") as skra:
     skra = skra.read().split("\n")
