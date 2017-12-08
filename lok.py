@@ -177,23 +177,68 @@ while asd:
                 print("Rangt gagnatak")
 
             if verk == 1:               #vaskur
+                lagnir = input("Þarf að leggja nýjar lagnir fyrir vaskinn (Y/N)? ")
+                lagnir = lagnir.lower()
+                while True:
+                    if lagnir == "y":
+                        listi[1][1] = lagnir
+
+                        break
+                    elif lagnir == "n":
+                        listi[1][1] = lagnir
+                        break
+                    else:
+                        print("Rangur innsláttur")
+
                 listi[1][0] = verk
                 k1.pipari()
+
             elif verk == 2:             #klósett
+                lagnir = input("Þarf að leggja nýjar lagnir fyrir klósettið (Y/N)? ")
+                lagnir = lagnir.lower()
+                while True:
+                    if lagnir == "y":
+                        listi[1][1] = lagnir
+
+                        break
+                    elif lagnir == "n":
+                        listi[1][1] = lagnir
+                        break
+                    else:
+                        print("Rangur innsláttur")
                 listi[1][0] = verk
                 k1.pipari()
-            elif verk == 3:             #stórar lagnir
-                listi[1][0] = verk
-                k1.pipari()
-            elif verk == 4:             #ofn
-                fjofn = int(input("Fjöldi ofna? "))
-                if fjofn > 0:
-                    listi[1][1] = fjofn
+
+            elif verk == 3:             #ofn
+                skipta = int(input("1. Skipta um ofn/ofna"
+                                   "\n2. Setja upp nýjan ofn"
+                                   "\nVeldu (1-2): "))
+
+                if skipta == 1:
+                    fjofn = int(input("Fjöldi ofna? "))
+                    if fjofn > 0:
+                        listi[1][1] = fjofn
+                    else:
+                        print("Enginn ofn")
+                    listi[1][0] = verk
+                    k1.pipari()
+                elif skipta == 2:
+                    listi[1][]
                 else:
-                    print("Enginn ofn")
-                listi[1][0] = verk
-                k1.pipari()
-            elif verk == 5:             #sturta/bað
+                    print("Rangur innsláttur")
+
+            elif verk == 4:             #sturta/bað
+                lagnir = input("Þarf að leggja nýjar lagnir fyrir sturtuna/baðið (Y/N)? ")
+                lagnir = lagnir.lower()
+                while True:
+                    if lagnir == "y":
+                        listi[1][1] = lagnir
+                        break
+                    elif lagnir == "n":
+                        listi[1][1] = lagnir
+                        break
+                    else:
+                        print("Rangur innsláttur")
                 listi[1][0] = verk
                 k1.pipari()
 
@@ -215,7 +260,7 @@ while asd:
             valR = int(input("Veldu (1-3): "))
             if valR == 1:
                 staerd = int(input("Sláðu inn stæð hússins í m²: "))
-                listi[2][]
+                listi[2][1]
 
 
         elif val == "smiður" or val == "smidur" or val == "4":
