@@ -1,4 +1,4 @@
 Olgeir Helgason,6654218,ollihe@hotmail.com,2900;Guðlaugur Þór Tryggvason,8574298,GTHT12@visir.is,3000;Illugi Gauti Reynisson,6581246,grillugi123@gmail.com,3100
-Ben Dover,6527483,BenniDufa@gmail.com;Freyja Erlendsdóttir,8412677,frellaella@outlook.com;Ingólfur Vagnsson,6934721,ingovagns@gmail.com
-Freyr Aðalsteinsson,8793416,fraðalsteinn@hotmail.com;Heiða Jónasdóttir,6665252,heida_xXx@gmail.com;Þórunn Lára Gunnarsdóttir,6547821,kotturinnhalli@gmail.com
-Eiður Ragnarsson,8614361,eiduragnars@visir.is;Ylfa Ýr Sigmundsdóttir,6531947,yysig@gmail.com;Þorkell Máni Logason,8665582,thecoolman@hotmail.com
+Ben Dover,6527483,BenniDufa@gmail.com,2900;Freyja Erlendsdóttir,8412677,frellaella@outlook.com,3000;Ingólfur Vagnsson,6934721,ingovagns@gmail.com,3100
+Freyr Aðalsteinsson,8793416,fraðalsteinn@hotmail.com,2900;Heiða Jónasdóttir,6665252,heida_xXx@gmail.com,3000;Þórunn Lára Gunnarsdóttir,6547821,kotturinnhalli@gmail.com,3100
+Eiður Ragnarsson,8614361,eiduragnars@visir.is,2900;Ylfa Ýr Sigmundsdóttir,6531947,yysig@gmail.com,3000;Þorkell Máni Logason,8665582,thecoolman@hotmail.com,3100

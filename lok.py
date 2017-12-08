@@ -99,6 +99,7 @@ class Thjonusta:
 listi = [["litur", "stærð veggs/lofts", "loft eða veggur"], #Málari
          ["ákveðið verk", 0], 0, [0, [0, 0, 0], [0, 0, 0]], 0]
 
+teljari2 = 1
 verk = 0
 k1 = Thjonusta(listi)
 asd = True
@@ -122,6 +123,8 @@ while asd:
                     print(i, end=" ")
                     if teljari2 == 3:
                         print(" Tímakaup:", end=" ")
+                    elif teljari2 == 4:
+                        print("kr",end=" ")
                     teljari2 += 1
                 print("")
                 teljari += 1
@@ -156,12 +159,19 @@ while asd:
 
             except ValueError as x:
                 print(x)
+
         elif val == "pipari" or val == "pípari" or val == "2":
             teljari = 1
             for x in puppl:
                 print(teljari, end=". ")
+                teljari2 = 1
                 for i in x:
                     print(i, end=" ")
+                    if teljari2 == 3:
+                        print(" Tímakaup:", end=" ")
+                    elif teljari2 == 4:
+                        print("kr", end=" ")
+                    teljari2 += 1
                 print("")
                 teljari += 1
             manni = int(input("Veldu pípara (1-3): "))
@@ -223,7 +233,7 @@ while asd:
                     listi[1][0] = verk
                     k1.pipari()
                 elif skipta == 2:
-                    listi[1][]
+                   asd="asd"
                 else:
                     print("Rangur innsláttur")
 
@@ -246,8 +256,14 @@ while asd:
             teljari = 1
             for x in ruppl:
                 print(teljari, end=". ")
+                teljari2 = 1
                 for i in x:
                     print(i, end=" ")
+                    if teljari2 == 3:
+                        print(" Tímakaup:", end=" ")
+                    elif teljari2 == 4:
+                        print("kr", end=" ")
+                    teljari2 += 1
                 print("")
                 teljari += 1
             manni = int(input("Veldu rafvirkja (1-3): "))
@@ -262,13 +278,18 @@ while asd:
                 staerd = int(input("Sláðu inn stæð hússins í m²: "))
                 listi[2][1]
 
-
         elif val == "smiður" or val == "smidur" or val == "4":
             teljari = 1
             for x in suppl:
                 print(teljari, end=". ")
+                teljari2 = 1
                 for i in x:
                     print(i, end=" ")
+                    if teljari2 == 3:
+                        print(" Tímakaup:", end=" ")
+                    elif teljari2 == 4:
+                        print("kr", end=" ")
+                    teljari2 += 1
                 print("")
                 teljari += 1
             manni = int(input("Veldu smið (1-3): "))
