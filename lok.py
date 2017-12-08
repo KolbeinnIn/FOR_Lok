@@ -168,8 +168,14 @@ while asd:
         val = input("Veldu þjónustu: ")
         val = val.lower()
 
+
+        #Málari búinn
         if val == "malari" or val == "málari" or val == "1":
             teljari = 1
+
+
+            #Á milli '#' eru for lykkjur sem sýna valkosti og upplýsingar um verktaka, sama hvað notandi velur (nenni ekki að commena fyrir hvert einasta)
+            ###########################
             for x in muppl:
                 print(teljari, end=". ")
                 teljari2 = 1
@@ -182,6 +188,8 @@ while asd:
                     teljari2 += 1
                 print("")
                 teljari += 1
+            ###########################
+
             manni = int(input("Veldu málara (1-3): "))
             listi[4] = muppl[manni-1]
             print("1. Veggur/ir"
