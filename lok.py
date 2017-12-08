@@ -124,7 +124,7 @@ while asd:
                     if teljari2 == 3:
                         print(" Tímakaup:", end=" ")
                     elif teljari2 == 4:
-                        print("kr",end=" ")
+                        print("kr", end=" ")
                     teljari2 += 1
                 print("")
                 teljari += 1
@@ -140,7 +140,7 @@ while asd:
                     listi[0][2] = veggthak
                     break
 
-            print("\nValmöguleikar:"
+            print("\nLitir:"
                   "\n1. Gulur"
                   "\n2. Rauður"
                   "\n3. Grænn"
