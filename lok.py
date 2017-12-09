@@ -192,15 +192,16 @@ class Thjonusta:
                 "\nSamtals: " + str(int(vsk + verd)) + "kr")
 
 
-"""
-    def smidur(self):
-        inadnout=self.th[3][]
-        return ("Það gera " + str(int(verd)) + "kr" +
-                "\nStaðfestingargjald " + str(stadfestignargjald) + "kr" +
-                "\nVaskur: " + str(vsk) + "kr" +
-                "\nSamtals: " + str(int(vsk + verd + stadfestignargjald)) + "kr")
 
-"""
+    def smidur(self,nr,sv,a):
+        verd = nr * sv
+        vsk = verd * 0.24
+        return ("\nSmiður:" + str(a[0])+ " " + str(a[1]) + " " + str(a[2]) +
+                "\nÞað gera " + str(int(verd)) + "kr" +
+                "\nVaskur: " + str(vsk) + "kr" +
+                "\nSamtals: " + str(int(vsk + verd)) + "kr")
+          
+
 
 # listi[0] = hvað málarinn á að gera
 # listi[1] = hvað píparinn á að gera
@@ -500,46 +501,34 @@ while asd:
             print(k1.rafv())
 
 
+
         elif val == "smiður" or val == "smidur" or val == "4":
-            #####################################################################
-            teljari = 1
+            teljari = 1#prenta út alla smiðina
             for x in suppl:
                 print(teljari, end=". ")
-                teljari2 = 1
                 for i in x:
                     print(i, end=" ")
-                    if teljari2 == 3:
-                        print(" Tímakaup:", end=" ")
-                    elif teljari2 == 4:
-                        print("kr", end=" ")
-                    teljari2 += 1
                 print("")
                 teljari += 1
-            #####################################################################
-            while True:
-                manni = int(input("Veldu pípara (1-3): "))
-                if manni == 1 or manni == 2 or manni == 3:
-                    listi[4] = puppl[manni - 1]
-                    break
-                else:
-                    print("Rangur innsláttur")
+            manni = int(input("Veldu smið (1-3): "))#notandi velur smið
+            kall=suppl[manni - 1]
             print("\nValmöguleikar:"
                   "\n1. Utandyra"
                   "\n2. Innandyra")
-            try:
-                utin = int(input("Veldu annað hvort: "))
-
+            try: 
+                utin = int(input("Veldu annað hvort: "))#notandi velur innan eða utan dyra
                 if utin == 1:
-                    print("\nValmöguleikar:"
+                    print("\nValmöguleikar:"#gef val mögu leika
                           "\n1. Þak"
                           "\n2. Gluggar"
                           "\n3. Pallur")
-                    utinn = int(input("Veldu verk (1-3): "))
+                    utinn = int(input("Veldu verk (1-3): "))#notandi velur
+                   
                     if utinn == 1:
-                        st = int(input("Hver er stærð þaksins í fermetrum? "))
-                        fm = 3200
-                        skurt = fm * st
-                        print(skurt)
+                        st = int(input("Hver er stærð þaksins í fermetrum? "))#bið um stærð þaks
+                        sv=3200
+                        print(Thjonusta.smidur(1,st,sv,kall))#sendi upplýsingar í fallið
+                        
                     elif utinn == 2:
                         fj = int(input("Hversu margir eru gluggarnir? "))
                         teljari = 0
@@ -551,30 +540,29 @@ while asd:
                             ster2 = int(input("Sláðu inn breidd glugga í cm "))
                             ster3 = ster1 * ster2
                             jolasveinn.append(ster3)
-                        print(jolasveinn)
-                        jolatre = 3000
+                        jolatre = 3000#reikna verð
                         for x in jolasveinn:
                             jolatre = x + jolatre
-                        print(jolatre)
-
+                        print(Thjonusta.smidur(1,fj,jolatre,kall))
+                        
                     elif utinn == 3:
                         pall = int(input("Sláðu inn stærð palls í fermetrum "))
-                        vegg = input("Viltu vegg? J/N").upper()
+                        vegg = input("Viltu vegg? J/N").upper()#spyr hvort notandinn vilji vegg fyrir pallinn
                         if vegg == "J":
                             ha = int(input("Hversu hár á hann að vera? "))
-                            qwert = ha * 15000
-                            vallur = qwert + (pall * 2500)
+                            qwert=ha*75
+                            vallur=qwert+(pall*50)
                         else:
-                            vallur = pall * 2500
-                        print(vallur)
+                            vallur=pall*50
+                        print(Thjonusta.smidur(1,pall,vallur,kall))
                     else:
                         print("Rangur innsláttur")
-
+                        
                 elif utin == 2:
                     print("\nValmöguleikar:"
-                          "\n1. Veggur"
-                          "\n2. Innrétting"
-                          "\n3. Gólf")
+                            "\n1. Veggur"
+                            "\n2. Innrétting"
+                            "\n3. Gólf")
                     utinn = int(input("Veldu verk (1-3): "))
                     if utinn == 1:
                         bubbi = int(input("Brjóta eða byggja vegg (1-2): "))
@@ -582,9 +570,9 @@ while asd:
                             skurtskurt = 0
                             fj = int(input("Hversu margir eru veggirnir? "))
                             for x in range(fj):
-                                skurtskurt = x * 500 + skurtskurt
-                                skurtskurt = skurtskurt + 8000
-                            skurtskurt += 5000
+                                skurtskurt=x*500+skurtskurt
+                                skurtskurt=skurtskurt+8000
+                            skurtskurt+=5000
                             print(skurtskurt)
                         elif bubbi == 2:
                             fj = int(input("Hversu margir eru veggirnir? "))
@@ -597,11 +585,12 @@ while asd:
                                 jolasvein.append(sterd)
                             skurtskurt = 0
                             for x in jolasvein:
-                                skurtskurt = x * 1000 + skurtskurt
-                                skurtskurt = skurtskurt + 8000
-                            print(skurtskurt)
+                                skurtskurt=x*1000+skurtskurt
+                                skurtskurt=skurtskurt+8000
+                            print(Thjonusta.smidur(1,fj,skurtskurt,kall))
                         else:
                             print("Rangur innsláttur")
+                            
                     elif utinn == 2:
                         print("Staðsetning:"
                               "\n1. Eldhúsið"
@@ -613,16 +602,13 @@ while asd:
                             kost = 200000
                         else:
                             print("Rangur innsláttur")
-                        print(kost)
+                        print(Thjonusta.smidur(1,1,kost,kall))
+                        
                     elif utinn == 3:
                         jolakotturinn = int(input("Stærð gólfs í fermetrum: "))
-                        jolakotturinn = jolakotturinn * 5000
-                        print(jolakotturinn)
-
-                    else:
-                        print("Rangur innsláttur")
-            except:
-                print("Rangur innsláttur")
+                        print(Thjonusta.smidur(1,jolakotturinn,5000,kall))
+            except ValueError as x:
+                print(x)
         else:
             raise ValueError("Rangt gagnatak")
 
